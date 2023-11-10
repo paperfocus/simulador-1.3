@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Estilos y fuentes -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    <!-- Íconos y Bootstrap (utilizando la versión 5.3.2) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <!-- SweetAlert2 para mostrar alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Bootstrap (utilizando la versión 4.5.2) y jQuery (utilizando la versión 3.5.1) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- MENÚ SISTEMA -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Lado Izquierdo (Side Bar) -->
+            <div class="col-md-3 col-lg-2 bg-light">
+                <div class="sidebar">
+                    <a id="btn-sistema" href="index.html" target="_blank">Inicio</a>
+                
+                    <a id="btn-sistema"  href="cont-Productos">Productos Agregados</a>
+                    
+                    <div id="mensaje-alerta" class="container text-center">
+                        <!-- Aquí se genera el mensaje de alerta -->
+                    </div>
+
+                    <button id="limpiar-local-store" class="btn-limpiar-local-store">Limpiar Local Storage</button>
+                    <button id="actualizar-sistema" class="btn-actualizar-sistema">Actualizar sistema</button>
+                </div>
+            </div>
+
+            <!-- Lado Derecho (Contenido) -->
+            <div id="container-der" class="col-md-9 col-12">
+                <!-- Resto del contenido sigue aquí -->
+                <!-- AGREGAR PRODUCTOS -->
+                <div id="cont-Productos" class="container text-left">
+                    <form id="formulario">
+                        <p id="texto-titulo-sistema" class="añadir">Añadir nuevo producto / editar</p>
+
+                        <div class="mb-3">
+                            <label for="nombre">Nombre del producto:</label>
+                            <input id="nombre" type="text" class="form-control" aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion-producto">Descripción corta del producto</label>
+                            <textarea class="form-control" id="descripcion-producto" rows="3"></textarea>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="imagen">Añadir Imagen del producto (500x500px sugerido):</label>
+                                <input type="file" id="imagen" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="container text-left">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="precio">Precio normal</label>
+                                        <input id="precio" type="number" class="form-control"
+                                            aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="precio-rebajado">Precio rebajado</label>
+                                        <input id="precio-rebajado" type="number" class="form-control"
+                                            aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="cantidad">Cantidad</label>
+                                        <input id="cantidad" type="number" class="form-control"
+                                            aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                    <div id="ancho-col-categoria" class="col">
+                                        Todas las categorías
+                                        <tbody id="listaProductos">
+                                            <!-- Lugar donde mostrar las categorías -->
+                                            <div id="mostrar-categorias-principales"
+                                                class="barra-desplazamiento-cat"></div>
+                                        </tbody>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="sku">SKU</label>
+                                        <input id="sku" type="text" class="form-control"
+                                            aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                    <div class="col">
+                                        <div id="btn-publicar-producto">
+                                            <!-- <button type="submit" class="btn btn-primary"
+                                                onclick="window.location.href='#productos-sistema';">Publicar</button> -->
+                                            <button id="boton-publicar-productos"
+                                                class="btn-actualizar-sistema">Publicar Productos</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                        </div>
+                    </form>
+
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <form id="formulario-agregar-categoria">
+                                    <div class="mb-3">
+                                        <label for="nombre-categoria">Agregar categoría</label>
+                                        <input id="nombre-categoria" type="text" class="form-control"
+                                            aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                    <button id="boton-publicar-categoria" class="btn-actualizar-sistema">+ Agregar
+                                        Categoría</button>
+                                </form>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- VER PRODUCTOS EN EL SISTEMA -->
+                <div id="cont-Productos" class="container text-left">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Nombre</th>
+                                <!-- <th scope="col">Marca</th> -->
+                                <th scope="col">Precio</th>
+                                <th scope="col">Precio Oferta</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Categorías</th>
+                                <th scope="col">SKU</th>
+                                <th scope="col">Fecha</th>
+                                <!-- <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th> -->
+                            </tr>
+                        </thead>
+                        <tbody id="mostrar-Productos">
+                            <!-- Filas de productos se agregarán aquí -->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="funciones">
+        <div id="producto-Individual"></div>
+        <div id="mostrar-productos-tienda"></div>
+        <div id="mostrar-Carrusel-Imagenes"></div>
+        <div id="formulario"></div>
+        <div id="mostrar-carrito"></div>
+        <div id="carritoDropdown"></div>
+        <div id="buscar-producto"></div>
+        <div id="boton-buscar-producto"></div>
+        <div id="producto-Individual-oferta"></div>
+        <div id="boton-publicar-categoria"></div>
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+            <div class="carousel-inner">
+                <!-- Los elementos generados por JavaScript se agregarán aquí -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+<script src="sistemaPrincipal.js" defer></script>    
+</body>
+</html>

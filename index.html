@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    
+        <!-- Estilos y fuentes -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    
+        <!-- Íconos y Bootstrap (utilizando la versión 5.3.2) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+        <!-- SweetAlert2 para mostrar alertas -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+        <!-- Bootstrap (utilizando la versión 4.5.2) y jQuery (utilizando la versión 3.5.1) -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+<body>
+<!-- PRIMERA SECCION -->
+<div id="primera-sec" class="container-fluid text-center">
+  <div class="row">
+      <div id="fono" class="col-lg-2">
+          <i class="fa-solid fa-phone"></i> +56 9 1234 5678
+      </div>
+      <div id="contacto" class="col-lg-2">
+          
+      </div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2"></div>
+      <div class="col-lg-2"></div>
+      <div id="contacto" class="col-lg-2">
+        <i class="fa-solid fa-envelope"></i> contacto@paperfocus.cl
+    </div>
+  </div>
+</div>
+
+<!-- NAV BAR -->
+<div class="nav-bar">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container text-center"> <!-- Agrega la clase text-center al contenedor principal -->
+          <a class="navbar-brand" href="index.html">
+              <img src="/img/logo.png" alt="Logo de tu empresa" class="logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="text-center">
+              <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                      <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#" target="_blank">Tienda</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#" target="_blank">Quienes somos</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#" target="_blank">Contacto</a>
+                      </li>
+                      <div id="carrito" class="col">
+                          <div class="dropdown" id="carritoDropdown">
+                                <button id="boton-carrito" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i id="icono-carrito" class="fa-solid fa-cart-shopping"></i>
+                                    <span id="burbuja" class="burbuja-carrito"></span>
+                                </button>
+                                
+
+                              <ul class="dropdown-menu">
+
+                                  <div id="mostrar-carrito" class="barra-desplazamiento-carr">
+                                    <p id="total-carrito"></p>
+
+                                  </div>
+                                  <div id="btn-finalizar-compra"></div>
+
+                              </ul>
+                          </div>
+                      </div>
+                  </ul>
+              </div>
+          </div>
+          <!-- Botón para abrir el modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalBusqueda">
+              Buscar Productos <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <!-- Modal de Búsqueda -->
+          <div class="modal fade" id="modalBusqueda" tabindex="-1" aria-labelledby="modalBusquedaLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="modalBusquedaLabel">Búsqueda de Productos</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <input id="busqueda" type="text" class="form-control" placeholder="Buscar productos" oninput="buscarProductosEnTiempoReal()">
+                          <div id="resultados-busqueda"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </nav>
+</div>
+
+<!-- CONTENIDO BANNER PRINCIPAL -->
+  <div id="carrusel-container" class="container full-width-container text-center">
+      <div id="mostrar-Carrusel-Imagenes"><!-- MUESTRA EL CAROUSEL --></div>
+  </div>
+
+<!-- CUARTA SECCION -->
+<div id="cuarta-seccion" class="container text-center">
+    <div id="iconos-medios" class="row">
+        <div class="col"></div>
+        <div id="camion-envio" class="col"><i class="fa-solid fa-truck-fast"></i> Envio Rapido 24hrs</div>
+        <div id="tarjeta" class="col"><i class="fa-brands fa-cc-visa"></i> 24 cuotas sin interés</div>
+        <div id="envio-gratis" class="col"><i class="fa-solid fa-dolly"></i> Envio Gratis sobre $29.990</div>
+        <div class="col"></div>
+    </div>
+</div>
+<!-- GALERIA DE PRODUCTOS -->
+<div id="contenedor-titulo" class="full-width-container text-center">
+    <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-5">
+                <div id="texto-titulo" ><h1>PRODUCTOS TIENDA </h1>
+                <div class="linea-morada"></div>    
+            </div>
+            </div>
+            <div class="col">
+            </div>
+    </div>
+</div>    
+<div id="contenedor-productos" class="full-width-container text-center"> 
+    <!-- CARD DE PRODUCTOS -->
+    <div class="card-body">
+        <div  class="card-container">
+            <div id="mostrar-productos-tienda"></div>
+            <!-- Aquí se mostrarán las cards de productos -->
+        </div>
+    </div>
+</div>
+<!-- PRODUCTOS OFERTA -->
+<div id="contenedor-producto-oferta" class="container-fluid text-center">
+    <div class="row">
+      <div class="col-4"><p id="titulo-mas-vendido" >PRODUCTOS EN OFERTAS</p>
+      <div class="linea-morada"></div>
+      </div>
+
+      <!-- CAROUSEL -->
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner">
+            <!-- Los elementos generados por JavaScript se agregarán aquí -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>  
+</div>
+
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+      <div class="row">
+          <!-- Columna 1: Logotipo -->
+        <div class="col">
+              <img src="img/logo.png" alt="Logo de la empresa" class="logo-footer">
+              <p class="texto-leyenda">"Somos una empresa líder en el mercado de productos informáticos, 
+                ofreciendo una amplia gama de soluciones 
+                tecnológicas para satisfacer las necesidades de nuestros clientes. </p>
+                <div class="container">
+                    <p id="texto-redes"></pclass> Síguenos en:</p>
+                    <div id="iconos-redes-sociales" class="row row-cols-5">
+                        <div class="col"><i class="fa-brands fa-instagram"></i></div>
+                        <div class="col"><i class="fa-brands fa-facebook"></i></div>
+                        <div class="col"><i class="fa-brands fa-github"></i></div>
+                        <div class="col"><i class="fa-brands fa-youtube"></i></div>
+                    </div>
+                </div>     
+        </div>
+
+
+          <!-- Columna 2: Mapa del sitio -->
+          <div class="col">
+              <div id="milista" class="footer-section">
+                  <p  class="section-title">Mapa del sitio</p>
+              </div>
+              <div class="col">
+                <ul  class="enlaces">
+                    <li><i class="fa-regular fa-circle-check"></i><a href="#"> Inicio</a></li>
+                    <li><i class="fa-regular fa-circle-check"></i><a href="#"> Tienda</a></li>
+                    <li><i class="fa-regular fa-circle-check"></i><a href="#"> Ofertas</a></li>
+                    <li><i class="fa-regular fa-circle-check"></i><a href="#"> Política de Privacidad</a></li>
+                    <li><i class="fa-regular fa-circle-check"></i><a href="#"> Contacto</a></li>
+                </ul>
+              </div>
+          </div>
+
+          <!-- Columna 3: Nosotros -->
+          <div class="col">
+            <div id="milista" class="footer-section">
+                <p  class="section-title">Nosotros</p>
+               
+            </div>
+            <div class="col">
+                <ul class="enlaces">
+                    <li><a href="#"><i class="fa-solid fa-phone"></i> +56 9 9091 1234</a></li>
+                    <li><a href="#"><i class="fa-brands fa-whatsapp"></i> +56 9 8509 9151
+                    </a></li>
+                    <li><a href="#"><i class="fa-regular fa-map"></i> Viña del mar, Valparaíso.</a></li>
+                    <li><a href="#"><i class="fa-regular fa-file-lines"></i> Política de Privacidad</a></li>
+                </ul>  
+            </div>
+        </div>
+        <!-- Columna 4: Medios de pago -->
+          <div class="col">
+              <div class="footer-section">
+                  <p class="section-title">Medios de pago</p>
+                  <img src="img/webpay-2abl.png" alt="Medios de pago aceptados" width="200">
+              </div>
+          </div>
+      </div>
+  </div>
+  
+</footer>
+
+<div class="funciones">
+<div id="producto-Individual"></div>
+<div id="mostrar-productos-tienda"></div>
+<div id="mostrar-productos-tienda"></div>
+<div id="mostrar-Productos"></div>
+<div id="limpiar-local-store"></div>
+<div id="actualizar-sistema"></div>
+<div id="mostrar-categorias-principales"></div>
+<div id="formulario"></div>
+<div id="boton-publicar-categoria"></div>
+</div>
+
+<script>
+  function buscarProductosEnTiempoReal() {
+    const consulta = document.getElementById("busqueda").value.toLowerCase();
+    const resultados = document.getElementById("resultados-busqueda");
+  
+    const productosFiltrados = productosArray.filter(producto => {
+      const nombreProducto = producto.nombre.toLowerCase();
+      return nombreProducto.includes(consulta);
+    });
+  
+    resultados.innerHTML = "";
+  
+    if (productosFiltrados.length > 0) {
+      const listaResultados = document.createElement("ul");
+      listaResultados.classList.add("list-group");
+  
+      productosFiltrados.forEach(producto => {
+        const itemResultado = document.createElement("li");
+        itemResultado.classList.add("list-group-item"); 
+        itemResultado.textContent = `${producto.nombre} - Precio: $${producto.precio.toLocaleString()}`;
+
+  
+       
+        const boton = document.createElement("button");
+        boton.classList.add("btn-añadir-carrito-busqueda");
+        boton.textContent = "Añadir al carrito";
+  
+        
+        boton.addEventListener("click", () => {
+          //
+          añadirCarrito(producto);
+          mostrarCarrito();
+          guardarProductosEnLocalStorage();
+          Swal.fire(`Producto ${producto.nombre} \nAgregado al Carrito!`);
+        });
+  
+       
+        itemResultado.appendChild(boton);
+  
+        
+        listaResultados.appendChild(itemResultado);
+      });
+  
+      resultados.appendChild(listaResultados);
+    } else {
+      resultados.innerHTML = '<p class="mt-3">No se encontraron productos.</p>'; 
+    }
+  }
+
+  window.onload = function() {
+    mostrarTotalCarrito();
+};
+  
+  
+   </script>
+<script src="sistemaPrincipal.js" defer></script>
+
+
+</body>
+</html>
